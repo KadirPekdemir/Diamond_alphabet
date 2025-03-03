@@ -1,63 +1,40 @@
-# Diamond_alphabet
-This program creates a diamond shape according to the entered letter.
-import java.util.Scanner;
+# Diamond Alphabet Generator
 
-//Kadir PEKDEMİR
-//This program creates a diamond shape according to the entered letter.
+This Java program generates a diamond shape using letters, based on the input letter provided by the user. The diamond's size and shape adjust according to the entered letter. The program only accepts a single alphabet letter as input.
 
-public class DiamondAlphabet {
-	
-	public static void main(String[] args) {
-		//Create Scanner
-		Scanner input = new Scanner(System.in);
-		System.out.print("Enter a Letter: ");
-		//Capitalizes
-		String str = input.next();
-		str = str.toUpperCase();
-		char letter = str.charAt(0);
-        //Separates invalid characters
-		if (str.length() > 1 || ((str.charAt(0) < 65) || str.charAt(0) > 122)
-				|| (str.charAt(0) < 97 && str.charAt(0) > 90)) {
-			System.out.println("Invalid input!");
-		//Call methods	
-		} else
-			printDiamond(constructDiamond(letter));
+### Features:
+- **Diamond Shape Generation**: The program generates a symmetric diamond shape based on the provided alphabet letter. The shape starts from 'A' and expands up to the letter entered by the user.
+- **Input Validation**: The program ensures that the input is a single valid alphabet letter. If an invalid input is provided, an error message will be shown.
 
-	}
+### How It Works:
+1. **Input**:
+   - The user is prompted to enter a letter. The program only accepts a single letter and converts it to uppercase.
+   
+2. **Diamond Construction**:
+   - The program constructs a 2D array representing the diamond shape. The size of the diamond is determined by the position of the entered letter in the alphabet (e.g., 'A' forms a 1x1 diamond, 'B' forms a 3x3 diamond, etc.).
+   
+3. **Output**:
+   - The program prints the generated diamond pattern to the console, with each row of the array forming a line of the diamond.
 
-	public static char[][] constructDiamond(char letter) {
-         // Create array
-		char[][] diamond = new char[((char) (letter) - 64) * 2 - 1][((char) (letter) - 64) * 2 - 1];
-         //Forms the diamond shape
-		for (int i = 0; i < diamond.length; i++) {
-			for (int j = 0; j < diamond.length; j++) {
+### Example:
 
-				if ((j == (diamond.length) / 2 - i) || (j == (diamond.length) / 2 + i)) {
-					diamond[i][j] = (char) (65 + i);
-				} else if ((i > (diamond.length) / 2) && ((j == (diamond.length / 2 + (diamond.length - 1 - i)))
-						|| (j == (diamond.length / 2 - (diamond.length - 1 - i))))) {
-					diamond[i][j] = (char) (65 + (diamond.length - 1 - i));
-				} else
-					diamond[i][j] = (char) (46);
+For example, if the user enters the letter **E**, the program will print the following diamond:
 
-			}
+Enter a Letter: E
+    A    
+   B B   
+  C   C  
+ D     D 
+E       E
+ D     D 
+  C   C  
+   B B   
+    A   
+### Technologies Used:
+- **Java**: The programming language used for the development of this project.
+- **Arrays**: The program uses a 2D array to construct and display the diamond shape.
 
-		}
-
-		return diamond;
-
-	}
-
-	public static void printDiamond(char[][] diamond) {
-		//Prints the array
-
-		for (int i = 0; i < diamond.length; i++) {
-			for (int j = 0; j < diamond.length; j++) {
-				System.out.print(diamond[i][j]);
-			}
-			System.out.println(" ");
-		}
-	}
-
-
-}
+### How to Run:
+1. Compile the program:
+   ```bash
+   javac DiamondAlphabet.java
